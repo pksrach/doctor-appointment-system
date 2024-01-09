@@ -16,6 +16,8 @@
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free-6.5.1-web/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free-6.5.1-web/css/all.min.css') }}">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -56,11 +58,11 @@
                         </div>
                         <div class="header-contact-detail">
                             <p class="contact-header">Contact</p>
-                            <p class="contact-info-header"> +1 315 369 5943</p>
+                            <p class="contact-info-header"> +855 886963482</p>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link header-login" href="login.html">login / Signup </a>
+                        <a class="nav-link header-login" href="{{ url('login') }}">login / Signup </a>
                     </li>
                 </ul>
             </nav>

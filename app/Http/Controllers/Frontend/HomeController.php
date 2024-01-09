@@ -11,4 +11,14 @@ class HomeController extends Controller
     {
         return view('frontend.index');
     }
+
+    public function termsConditions()
+    {
+        return view('frontend.term-condition');
+    }
+
+    public function privacyPolicy()
+    {
+        return view('frontend.privacy-policy');
+    }
 }
