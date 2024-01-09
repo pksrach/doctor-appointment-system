@@ -9,6 +9,11 @@ class DoctorController extends Controller
 {
     public function index()
     {
-        return view('frontend.doctor');
+        return view('frontend.doctor.index');
+    }
+
+    public function doctorProfile()
+    {
+        return view('frontend.doctor.profile');
     }
 }
