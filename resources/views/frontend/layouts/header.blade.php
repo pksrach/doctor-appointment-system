@@ -58,7 +58,7 @@
                         </div>
                         <div class="header-contact-detail">
                             <p class="contact-header">Contact</p>
-                            <p class="contact-info-header"> +855 886963482</p>
+                            <p class="contact-info-header"><a href="tel:+855 886963482">+855 886963482</a></p>
                         </div>
                     </li>
                     <li class="nav-item">
