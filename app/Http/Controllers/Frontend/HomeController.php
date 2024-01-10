@@ -21,4 +21,14 @@ class HomeController extends Controller
     {
         return view('frontend.privacy-policy');
     }
+
+    public function aboutUs()
+    {
+        return view('frontend.about-us');
+    }
+
+    public function contactUs()
+    {
+        return view('frontend.contact-us');
+    }
 }

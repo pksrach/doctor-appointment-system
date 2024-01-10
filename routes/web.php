@@ -18,6 +18,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/term-condition', [HomeController::class, 'termsConditions']);
     Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy']);
+    Route::get('/about-us', [HomeController::class, 'aboutUs']);
+    Route::get('/contact-us', [HomeController::class, 'contactUs']);
 });
 
 
