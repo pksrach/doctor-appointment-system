@@ -11,4 +11,8 @@ class BookingController extends Controller
     {
         return view('frontend.booking.index');
     }
+
+    public function checkout(){
+        return view('frontend.booking.checkout');
+    }
 }

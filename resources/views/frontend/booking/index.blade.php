@@ -204,7 +204,7 @@
 
                     <!-- Submit Section -->
                     <div class="submit-section proceed-btn text-right">
-                        <a href="checkout.html" class="btn btn-primary submit-btn">Proceed to Pay</a>
+                        <a href="{{ url('/checkout') }}" class="btn btn-primary submit-btn">Proceed to Pay</a>
                     </div>
                     <!-- /Submit Section -->
 
