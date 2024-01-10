@@ -146,7 +146,7 @@
 <script src="{{ asset('assets/js/slick.js') }}"></script>
 
 <!-- Custom JS -->
-<script src="assets/js/script.js"></script>
+<script src="{{ asset('assets/js/script.js') }}"></script>
 
 </body>
 
