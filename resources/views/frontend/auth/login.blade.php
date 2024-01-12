@@ -2,7 +2,7 @@
 @section('form-content')
     <div class="col-md-12 col-lg-6 login-right">
         <div class="login-header">
-            <h3>Login <span>Doccure</span></h3>
+            <h3>Login <span>Apex Clinic</span></h3>
         </div>
         <form action="#">
             <div class="form-group form-focus">
@@ -29,7 +29,7 @@
                     <a href="#" class="btn btn-google btn-block"><i class="fab fa-google mr-1"></i> Login</a>
                 </div>
             </div>
-            <div class="text-center dont-have">Don’t have an account? <a href="{{ url('/register') }}">Register</a></div>
+            <div class="text-center dont-have">Don't have an account? <a href="{{ url('/register') }}">Register</a></div>
         </form>
     </div>
 @endsection

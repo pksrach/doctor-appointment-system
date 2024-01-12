@@ -61,8 +61,33 @@
                             <p class="contact-info-header"><a href="tel:+855 886963482">+855 886963482</a></p>
                         </div>
                     </li>
+                    <!-- User Menu -->
+                    <li class="nav-item dropdown has-arrow logged-item">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <span class="user-img">
+                                <img class="rounded-circle" src="assets/img/patients/patient.jpg" width="31"
+                                    alt="Ryan Taylor">
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="user-header">
+                                <div class="avatar avatar-sm">
+                                    <img src="assets/img/patients/patient.jpg" alt="User Image"
+                                        class="avatar-img rounded-circle">
+                                </div>
+                                <div class="user-text">
+                                    <h6>Richard Wilson</h6>
+                                    <p class="text-muted mb-0">Patient</p>
+                                </div>
+                            </div>
+                            <a class="dropdown-item" href="{{ url('/patient-dashboard') }}">Dashboard</a>
+                            <a class="dropdown-item" href="{{ url('/profile-setting') }}">Profile Settings</a>
+                            <a class="dropdown-item" href="{{ url('/login') }}">Logout</a>
+                        </div>
+                    </li>
+                    <!-- /User Menu -->
                     <li class="nav-item">
-                        <a class="nav-link header-login" href="{{ url('login') }}">login / Signup </a>
+                        <a class="nav-link header-login" href="{{ url('/login') }}">login / Signup </a>
                     </li>
                 </ul>
             </nav>
