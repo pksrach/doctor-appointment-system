@@ -11,7 +11,8 @@
                     <div class="doc-info-left">
                         <div class="doctor-img">
                             <a href="{{ url('/doctor-profile') }}">
-                                <img src="assets/img/doctors/doctor-thumb-02.jpg" class="img-fluid" alt="User Image">
+                                <img src="{{ asset('assets/img/doctors/doctor-thumb-02.jpg') }}" class="img-fluid"
+                                    alt="User Image">
                             </a>
                         </div>
                         <div class="doc-info-cont">
