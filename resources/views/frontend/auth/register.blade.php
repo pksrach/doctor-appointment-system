@@ -20,7 +20,7 @@
                 <label class="focus-label">Create Password</label>
             </div>
             <div class="text-right">
-                <a class="forgot-link" href="{{ url('/login') }}">Already have an account?</a>
+                <a class="forgot-link" href="{{ url('/auth/login') }}">Already have an account?</a>
             </div>
             <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Signup</button>
             <div class="login-or">

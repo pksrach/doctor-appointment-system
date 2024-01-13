@@ -7,6 +7,9 @@
             border: 1px solid #000;
             display: block;
         }
+        .uppercase {
+            text-transform: uppercase;
+        }
     </style>
 @endsection
 @section('content')
@@ -31,7 +34,7 @@
     <div class="top-content container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
-                <h4 class="mt-5 text-info text-bold">Our Vision & Mission</h4>
+                <h4 class="mt-5 text-info text-bold uppercase">Our Vision & Mission</h4>
                 <hr />
             </div>
         </div>
