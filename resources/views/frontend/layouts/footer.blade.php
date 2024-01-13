@@ -54,8 +54,10 @@
                         <ul>
                             <li><a href="{{ url('/doctor') }}"><i class="fas fa-angle-double-right"></i> Search for
                                     Doctors</a></li>
-                            <li><a href="{{ url('/login') }}"><i class="fas fa-angle-double-right"></i> Login</a></li>
-                            <li><a href="{{ url('/register') }}"><i class="fas fa-angle-double-right"></i> Register</a>
+                            <li><a href="{{ url('/auth/login') }}"><i class="fas fa-angle-double-right"></i> Login</a>
+                            </li>
+                            <li><a href="{{ url('/auth/register') }}"><i class="fas fa-angle-double-right"></i>
+                                    Register</a>
                             </li>
                             <li><a href="{{ url('/booking') }}"><i class="fas fa-angle-double-right"></i> Booking</a>
                             </li>
