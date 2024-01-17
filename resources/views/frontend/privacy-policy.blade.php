@@ -25,40 +25,26 @@
                 <div class="col-12">
                     <div class="terms-content">
                         <div class="terms-text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel sodales mauris.
-                                Nunc accumsan mi massa, ut maximus magna ultricies et:</p>
-                            <ol>
-                                <li>Integer quam odio, ullamcorper id diam in, accumsan convallis libero. Duis at lacinia
-                                    urna.</li>
-                                <li>Mauris eget turpis sit amet purus pulvinar facilisis at sed lacus.</li>
-                                <li>Quisque malesuada volutpat orci, accumsan scelerisque lorem pulvinar vitae.</li>
-                                <li>Vestibulum sit amet sem aliquam, vestibulum nisi sed, sodales libero.</li>
+                            <h4>1. Introduction</h4>
+                            <p>Thank you for choosing our Doctor Appointment Website. This Privacy Policy is meant to help you understand how we collect, use, disclose, and safeguard your personal information when you use our website and services.</p>
+                        </div>
+                        <div class="terms-text">
+                            <h4>2. Information We Collect</h4>
+                            <ol type="A">
+                                <li>Personal Information: When you register for an account or make a doctor appointment, we may collect personal information such as your name, email address, phone number, and other relevant details.</li>
+                                <li>Health Information: In the process of booking a doctor appointment, you may provide information about your health condition, medical history, and related details. This information is crucial for facilitating the appointment and ensuring appropriate healthcare services.</li>
+                                <li>Usage Information: We collect information about how you interact with our website, including the pages you visit, the time and date of your visits, and the duration of your sessions.</li>
+                                <li>Device Information: We may collect information about the device you are using, including its type, model, operating system, and unique identifiers.</li>
                             </ol>
                         </div>
                         <div class="terms-text">
-                            <h4>Aenean accumsan aliquam justo, et rhoncus est ullamcorper at</h4>
-                            <p>Donec posuere dictum enim, vel sollicitudin orci tincidunt ac. Maecenas mattis ex eu elit
-                                tincidunt egestas. Vivamus posuere nunc vel metus bibendum varius. Vestibulum suscipit
-                                lacinia eros a aliquam. Sed dapibus arcu eget egestas hendrerit.</p>
-
-                            <p>Vivamus consectetur metus at nulla efficitur mattis. Aenean egestas eu odio vestibulum
-                                vestibulum. Duis nulla lectus, lacinia vitae nibh vitae, sagittis interdum lacus. Mauris
-                                lacinia leo odio, eget finibus lectus pharetra ut. Nullam in semper enim, id gravida nulla.
-                            </p>
-
-                            <p>Fusce gravida auctor justo, vel lobortis sem efficitur id. Cras eu eros vitae justo dictum
-                                tempor.</p>
-                        </div>
-                        <div class="terms-text">
-                            <h4>Etiam sed fermentum lectus. Quisque vitae ipsum libero</h4>
-                            <p>Phasellus sit amet vehicula arcu. Etiam pulvinar dui libero, vitae fringilla nulla convallis
-                                in. Fusce sagittis cursus nisl, at consectetur elit vestibulum vestibulum:</p>
-                            <ul>
-                                <li>Nunc pulvinar efficitur interdum.</li>
-                                <li>Donec feugiat feugiat pulvinar.</li>
-                                <li>Suspendisse eu risus feugiat, pellentesque arcu eu, molestie lorem. </li>
-                                <li>Duis non leo commodo, euismod ipsum a, feugiat libero.</li>
-                            </ul>
+                            <h4>3. How We Use Your Information</h4>
+                            <ol>
+                                <li>Appointment Processing: We use your personal and health information to facilitate the scheduling of doctor appointments and to ensure that healthcare providers have the necessary information to provide appropriate services.</li>
+                                <li>Communication: We may use your contact information to send you appointment reminders, updates, and other relevant communications.</li>
+                                <li>Improving Services: We analyze the information collected to improve the functionality and user experience of our website.</li>
+                                <li>Legal Compliance: We may use your information to comply with legal obligations, such as responding to legal requests and preventing fraudulent activities.</li>
+                            </ol>
                         </div>
                         <div class="terms-text">
                             <h4>pulvinar</h4>

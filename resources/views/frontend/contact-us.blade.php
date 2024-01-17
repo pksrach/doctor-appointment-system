@@ -1,5 +1,21 @@
 @extends('frontend.layouts.master')
 @section('content')
+<style>
+        /* Add your custom styles here */
+        .responsive-map{
+            overflow: hidden;
+            padding-bottom:56.25%;
+            position:relative;
+            height:0;
+            }
+            .responsive-map iframe{
+            left:0;
+            top:0;
+            height:100%;
+            width: 100%;
+            position:absolute;
+        }
+    </style>
     <!-- Breadcrumb -->
     <div class="breadcrumb-bar">
         <div class="container-fluid">
@@ -20,55 +36,78 @@
     </div>
     <!-- /Breadcrumb -->
     {{-- Contain --}}
-    <div class="top-content container">
-    <style>
-        .google-maps {
-            position: relative;
-            padding-bottom: 75%; // This is the aspect ratio
-            height: 0;
-            overflow: hidden;
-        }
-        .google-maps iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 30% !important;
-            height: 30% !important;
-        }
-
-    </style>
+    <div class="container mt-6">
+        <div id="photoCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" style="border-radius: 0 0 10px 10px">
+                <div class="carousel-item active">
+                    <img src="https://plus.unsplash.com/premium_photo-1681995277879-42e0d91897e0?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njl8fGhvc3BpdGFsfGVufDB8fDB8fHww" class="d-block w-100" alt="Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1613377512409-59c33c10c821?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzJ8fGhvc3BpdGFsfGVufDB8fDB8fHww" class="d-block w-100" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzB8fGhvc3BpdGFsfGVufDB8fDB8fHww" class="d-block w-100" alt="Image 3">
+                </div>
+                <!-- Add more carousel items as needed -->
+            </div>
+            <a class="carousel-control-prev" href="#photoCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#photoCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <br/>
+    <div class="container mt-5">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-12">
-                <h4 class="mt-5 text-info text-bold">FOR MORE INFORMATION PLEASE CONTACT US</h4>
-                <hr />
-                <h4 class="mt-5 text-info">APEX CLINIC</h4>
-                            <p>
-                                <i class="fas fa-phone-alt"></i>
-                                +855 886963482
-                            </p>
-                            <p class="mb-0">
-                                <i class="fas fa-envelope"></i>
-                                doctor.support@gmail.com
-                            </p>
+            <div class="col-md-6">
+                <!-- Form Section -->
+                <h2>Contact Us</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="text">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Enter your phone number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Enter your message"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="margin-bottom:30px;">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <!-- Company Information Section -->
+                <h2>Company Information</h2>
+                <p>
+                    APEX CLINIC<br>
+                    No. 86A, Street 110, Russian Federation Boulevard,<br> Sangkat Teuk Laak I, Khan Toul Kork, Phnom Penh, Cambodia.
+                    <br>Tel : +855 19 545 545 / +855 454 454
+                </p>
+
+                <!-- Google Map Section -->
+                <div class="responsive-map" style="margin-bottom: 30px;">
+                    <!-- <iframe src="https://maps.app.goo.gl/aGGHnJAqfLUTJuwM6" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15635.09413627128!2d104.8947315!3d11.5680861!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31095173761d4a53%3A0xcd09ff2f4d326e3f!2sSETEC%20Institute!5e0!3m2!1sen!2skh!4v1705493849589!5m2!1sen!2skh" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
         </div>
-        <div class="col-lg-12 col-md-12 col-12">
-            <img src="https://static.ips-cambodia.com/wp-content/uploads/2019/09/Sihanouk-Hospital-Center-of-HOPE-1024x679.jpg"
-                    alt="APEX CLINIC" class="img-fluid img-border" />
-        </div>    
-        <br></br>
-        <br></br>
-        <div class="col-lg-12 col-md-12 col-12">
-            <div class="google-maps">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804" frameborder="0" style="border:0"></iframe>
-            </div>  
-            <div class="footer-address">
-                <p><i class="fas fa-map-marker-alt"></i>
-                    No. 86A, Street 110, Russian Federation Boulevard,
-                    Sangkat Teuk Laak I, Khan Toul Kork, Phnom Penh, Cambodia </p>
-            </div>
-        </div>         
     </div>
+    <br/>
 
     {{-- End of Contain --}}
 @endsection
