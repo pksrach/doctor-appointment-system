@@ -59,7 +59,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="exist-customer">Existing Customer? <a href="{{ url('/login') }}">Click here
+                                    <div class="exist-customer">Existing Customer? <a href="{{ url('/auth/login') }}">Click here
                                             to login</a>
                                     </div>
                                 </div>
