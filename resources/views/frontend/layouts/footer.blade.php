@@ -73,7 +73,7 @@
 
                     <!-- Footer Widget -->
                     <div class="footer-widget footer-contact">
-                        <h2 class="footer-title">Contact Us</h2>
+                        <h2 class="footer-title"><a href="{{ url('/contact-us') }}" style="color: white">Contact Us</a></h2>
                         <div class="footer-contact-info">
                             <div class="footer-address">
                                 <span><i class="fas fa-map-marker-alt"></i></span>
@@ -82,11 +82,11 @@
                             </div>
                             <p>
                                 <i class="fas fa-phone-alt"></i>
-                                +855 886963482
+                                <a href="tel:+855 886963482" style="color: white">+855 886963482</a>
                             </p>
                             <p class="mb-0">
                                 <i class="fas fa-envelope"></i>
-                                doctor.support@gmail.com
+                                <a href="mailto:doctor.support@gmail.com" style="color: white">doctor.support@gmail.com</a>
                             </p>
                         </div>
                     </div>

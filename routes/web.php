@@ -12,7 +12,9 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('login-me', [AuthController::class, 'loginMe'])->name('login-me');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/register/save', [AuthController::class, 'registerSave'])->name('register-save');
     Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgot-password');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 // Manage Home Routes

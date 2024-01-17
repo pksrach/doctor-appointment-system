@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free-6.5.1-web/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free-6.5.1-web/css/all.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -66,8 +67,8 @@
                         <li class="nav-item dropdown has-arrow logged-item">
                             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                 <span class="user-img">
-                                    <img class="rounded-circle" src="assets/img/patients/patient.jpg" width="31"
-                                        alt="Ryan Taylor">
+                                    <img class="rounded-circle" src="{{ asset('assets/img/patients/patient.jpg') }}"
+                                        width="31" alt="Ryan Taylor">
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
@@ -77,21 +78,25 @@
                                             class="avatar-img rounded-circle">
                                     </div>
                                     <div class="user-text">
-                                        <h6>Richard Wilson</h6>
+                                        <h6>{{ Auth::user()->name }}</h6>
                                         <p class="text-muted mb-0">Patient</p>
                                     </div>
                                 </div>
-                                <a class="dropdown-item" href="{{ url('/patient-dashboard') }}">Dashboard</a>
-                                <a class="dropdown-item" href="{{ url('/profile-setting') }}">Profile Settings</a>
-                                <a class="dropdown-item" href="{{ url('/login') }}">Logout</a>
+                                <a class="dropdown-item {{ Request::is('patient-dashboard') ? 'active' : '' }}"
+                                    href="{{ url('/patient-dashboard') }}">Dashboard</a>
+                                <a class="dropdown-item {{ Request::is('profile-setting') ? 'active' : '' }}"
+                                    href="{{ url('/profile-setting') }}">Profile Settings</a>
+                                <a class="dropdown-item" href="{{ url('/auth/logout') }}">Logout</a>
                             </div>
                         </li>
                         <!-- /User Menu -->
-                    @else
+                    @endauth
+
+                    @guest
                         <li class="nav-item">
                             <a class="nav-link header-login" href="{{ url('/auth/login') }}">login / Signup </a>
                         </li>
-                    @endauth
+                    @endguest
                 </ul>
             </nav>
         </header>

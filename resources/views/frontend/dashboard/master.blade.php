@@ -8,10 +8,28 @@
                     <nav aria-label="breadcrumb" class="page-breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            @if (Request::is('patient-dashboard'))
+                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            @elseif(Request::is('favorite'))
+                                <li class="breadcrumb-item active" aria-current="page">Favorite</li>
+                            @elseif(Request::is('profile-setting'))
+                                <li class="breadcrumb-item active" aria-current="page">Profile Setting</li>
+                            @elseif(Request::is('change-password'))
+                                <li class="breadcrumb-item active" aria-current="page">Change Password</li>
+                            @endif
                         </ol>
                     </nav>
-                    <h2 class="breadcrumb-title">Dashboard</h2>
+                    <h2 class="breadcrumb-title">
+                        @if (Request::is('patient-dashboard'))
+                            Dashboard
+                        @elseif(Request::is('favourites'))
+                            Favorite
+                        @elseif(Request::is('profile-setting'))
+                            Profile Setting
+                        @elseif(Request::is('change-password'))
+                            Change Password
+                        @endif
+                    </h2>
                 </div>
             </div>
         </div>
@@ -44,25 +62,25 @@
                         <div class="dashboard-widget">
                             <nav class="dashboard-menu">
                                 <ul>
-                                    <li>
+                                    <li class="{{ Request::is('patient-dashboard') ? 'active' : '' }}">
                                         <a href="{{ url('/patient-dashboard') }}">
                                             <i class="fas fa-columns"></i>
                                             <span>Dashboard</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ Request::is('favorite') ? 'active' : '' }}">
                                         <a href="{{ url('/favorite') }}">
                                             <i class="fas fa-bookmark"></i>
                                             <span>Favourites</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ Request::is('profile-setting') ? 'active' : '' }}">
                                         <a href="{{ url('/profile-setting') }}">
                                             <i class="fas fa-user-cog"></i>
                                             <span>Profile Settings</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ Request::is('change-password') ? 'active' : '' }}">
                                         <a href="{{ url('/change-password') }}">
                                             <i class="fas fa-lock"></i>
                                             <span>Change Password</span>
