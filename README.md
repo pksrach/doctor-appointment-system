@@ -1,13 +1,22 @@
 <h1>Note</h1>
-<h3>How to run new project in Laravel</h3>
-<p>- Clone project into a specific directory.</p>
-<p>- Create new file new ( .env then copy text from .env.example and paste)</p>
-<p>Then user command below:
+<h2>How to run new project in Laravel</h2>
+<h3>1. Clone project into a specific directory.</h3>
+<code>git clone https://github.com/pksrach/doctor-appointment-system.git</code>
+
+<h3>2. Create new file new ( .env then copy text from .env.example and paste)</h3>
+<h3>3. Config database</h3>
+<span>In file .env find variable: <br/></span>
+<li>DB_CONNECTION=mysql</li>
+<li>DB_HOST=127.0.0.1</li>
+<li>DB_PORT=3306</li>
+<li>DB_DATABASE=doctor-appointment-system-db</li>
+<li>DB_USERNAME=root</li>
+<li>DB_PASSWORD=123456</li>
+
+<h3>4. Use command below:</h3>
 <li>composer install</li>
 <li>composer dump-autoload</li>
-<li>php artisan serve
-then run</li>
-</p>
+<li>php artisan serve for run project</li>
 <hr>
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
