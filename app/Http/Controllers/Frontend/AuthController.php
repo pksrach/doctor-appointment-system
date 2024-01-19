@@ -40,6 +40,12 @@ class AuthController extends Controller
 
         // If authentication is successful, redirect to the intended URL or dashboard
         if (Auth::attempt($data)) {
+            // Get customer by user id
+            $customer = Customer::where('user_id', Auth::id())->first();
+            // Set customer to session
+            session()->put('customer', $customer);
+            Log::info('Customer stored in session:', ['customer' => $customer]);
+
             $redirectUrl = $req->input('redirect_url', '/');
             return redirect($redirectUrl);
         }
@@ -80,7 +86,7 @@ class AuthController extends Controller
             ]);
 
             // Create customer
-            Customer::create([
+            $customer = Customer::create([
                 'firstname' => $data['name'],
                 'user_id' => $user->id,
                 'created_at' => now(),
@@ -94,6 +100,9 @@ class AuthController extends Controller
         // login user
         Log::info('Logging in user', ['user' => $user]);
         Auth::login($user);
+
+        // Flash customer data to the session
+        session()->flash('customer', $customer);
 
         // redirect to home page
         return redirect('/');

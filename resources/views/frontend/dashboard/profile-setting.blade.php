@@ -60,7 +60,15 @@
                             <select class="form-control">
                                 <option value="">Select Location</option>
                                 @foreach ($locations as $location)
-                                    <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                    @if ($customer && $customer->location_id == $location->id)
+                                        <option value="{{ $customer->location_id }}" selected>
+                                            {{ $location->name }}
+                                        </option>
+                                    @else
+                                        <option value="{{ $location->id }}">
+                                            {{ $location->name }}
+                                        </option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>

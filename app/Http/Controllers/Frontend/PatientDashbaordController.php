@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Models\Location;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class PatientDashbaordController extends Controller
