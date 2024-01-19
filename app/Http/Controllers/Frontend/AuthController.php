@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
+use App\Models\Role;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -68,13 +71,21 @@ class AuthController extends Controller
         $data['password'] = bcrypt($data['password']);
 
         try {
+            // Create user
             $user = User::create([
-                'name' => $data['name'],
                 'email' => $data['email'],
-                // 'role' => 'customer',
-                'password' => $data['password']
+                'role' => Role::CUSTOMER,
+                'password' => $data['password'],
+                'created_at' => now(),
             ]);
-        } catch (\Exception $e) {
+
+            // Create customer
+            Customer::create([
+                'firstname' => $data['name'],
+                'user_id' => $user->id,
+                'created_at' => now(),
+            ]);
+        } catch (Exception $e) {
             Log::error('Failed to create user', ['exception' => $e]);
             throw $e;
         }
