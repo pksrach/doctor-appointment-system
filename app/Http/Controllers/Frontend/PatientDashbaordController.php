@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class PatientDashbaordController extends Controller
@@ -19,7 +20,9 @@ class PatientDashbaordController extends Controller
 
     public function profileSetting()
     {
-        return view('frontend.dashboard.profile-setting');
+        $locations = Location::all(); // Location model
+
+        return view('frontend.dashboard.profile-setting', compact('locations'));
     }
 
     public function changePassword()

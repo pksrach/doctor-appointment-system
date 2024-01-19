@@ -44,22 +44,7 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <label>Blood Group</label>
-                            <select class="form-control select">
-                                <option>A-</option>
-                                <option>A+</option>
-                                <option>B-</option>
-                                <option>B+</option>
-                                <option>AB-</option>
-                                <option>AB+</option>
-                                <option>O-</option>
-                                <option>O+</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label>Email ID</label>
+                            <label>Email</label>
                             <input type="email" class="form-control" value="richard@example.com">
                         </div>
                     </div>
@@ -69,34 +54,23 @@
                             <input type="text" value="+1 202-555-0125" class="form-control">
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label>Address</label>
-                            <input type="text" class="form-control" value="806 Twin Willow Lane">
-                        </div>
-                    </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <label>City</label>
-                            <input type="text" class="form-control" value="Old Forge">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label>State</label>
-                            <input type="text" class="form-control" value="Newyork">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label>Zip Code</label>
-                            <input type="text" class="form-control" value="13420">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label>Country</label>
-                            <input type="text" class="form-control" value="United States">
+                            <label>Location</label>
+                            <select class="form-control">
+                                <option value="">Select Location</option>
+                                @foreach ($locations as $location)
+                                    @if ($customer && $customer->location_id == $location->id)
+                                        <option value="{{ $customer->location_id }}" selected>
+                                            {{ $location->name }}
+                                        </option>
+                                    @else
+                                        <option value="{{ $location->id }}">
+                                            {{ $location->name }}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
