@@ -23,6 +23,8 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     {{-- Override style --}}
     @yield('style')
 </head>

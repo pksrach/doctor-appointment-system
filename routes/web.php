@@ -44,5 +44,6 @@ Route::controller(PatientDashbaordController::class)->group(function () {
     Route::get('/patient-dashboard', [PatientDashbaordController::class, 'index']);
     Route::get('/favorite', [PatientDashbaordController::class, 'favorite']);
     Route::get('/profile-setting', [PatientDashbaordController::class, 'profileSetting']);
+    Route::post('/profile-update', [PatientDashbaordController::class, 'profileUpdate']);
     Route::get('/change-password', [PatientDashbaordController::class, 'changePassword']);
 });

@@ -87,7 +87,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/') }}">
+                                        <a href="{{ url('/auth/logout') }}">
                                             <i class="fas fa-sign-out-alt"></i>
                                             <span>Logout</span>
                                         </a>
