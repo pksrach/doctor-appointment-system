@@ -19,4 +19,9 @@ class Customer extends Model
         'user_id',
         'location_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

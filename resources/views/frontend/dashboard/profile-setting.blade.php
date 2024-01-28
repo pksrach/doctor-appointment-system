@@ -8,33 +8,32 @@
         $email = $user->email ?? '';
 
         // Customer fields
-        $attachment = $customer->attachment ?? asset('assets/img/profile.png');
+        $attachmentPath = $customer->attachment ?? asset('assets/img/profile.png');
+        $attachment = asset('uploads/' . $attachmentPath);
         $firstName = $customer->firstname ?? '';
         $lastName = $customer->lastname ?? '';
         $phone = $customer->phone ?? '';
         $dob = $customer->dob ?? '';
         $gender = $customer->gender ?? 0;
-
-        Log::info('user in profile=>' . $user);
     @endphp
 
     <div class="card">
         <div class="card-body">
-
             <!-- Profile Settings Form -->
-            <form action="/profile-update" method="post" enctype="multipart/form-data">
+            <form action="{{ route('profile-update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row form-row">
                     <div class="col-12 col-md-12">
                         <div class="form-group">
                             <div class="change-avatar">
                                 <div class="profile-img">
-                                    <img src="{{ $attachment }}" alt="User Image">
+                                    <img src="{{ $attachment }}" alt="User Image" id="imagePreview">
                                 </div>
                                 <div class="upload-img">
                                     <div class="change-photo-btn">
                                         <span><i class="fa fa-upload"></i> Upload Profile</span>
-                                        <input type="file" class="upload" name="attachment">
+                                        <input type="file" id="attachment" name="attachment" class="upload"
+                                            onchange="previewImage(this)">
                                     </div>
                                     <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
                                 </div>
@@ -111,11 +110,34 @@
                 </div>
             </form>
             <!-- /Profile Settings Form -->
-
         </div>
     </div>
 
     <script>
+        function previewImage(input) {
+            var preview = document.getElementById('imagePreview');
+            preview.innerHTML = ''; // Clear previous preview
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    var image = new Image();
+                    image.src = e.target.result;
+                    image.style.maxWidth = '100%'; // Ensure image fits container width
+                    preview.appendChild(image);
+
+                    // Set the uploaded image as the src attribute of the profile image
+                    var profileImg = document.querySelector('.profile-img img');
+                    if (profileImg) {
+                        profileImg.src = e.target.result;
+                    }
+                };
+
+                reader.readAsDataURL(input.files[0]); // Read the selected file as a data URL
+            }
+        }
+
         $(document).ready(function() {
             $('form').on('submit', function(event) {
                 event.preventDefault();
@@ -124,22 +146,34 @@
                 $('.alert').remove();
 
                 // Your AJAX call here
+                var form = $('form')[0]; // You need to use standard javascript object here
                 $.ajax({
                     url: $(this).attr('action'),
                     type: $(this).attr('method'),
-                    data: $(this).serialize(),
-                    success: function() {
+                    data: new FormData(form),
+                    processData: false,
+                    contentType: false,
+
+                    success: function(res) {
                         // On success, show a Bootstrap success alert
                         $('.submit-section').prepend(
                             '<div class="alert alert-success" role="alert">Save successful!</div>'
                         );
                     },
-                    error: function() {
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        // On error, show a Bootstrap error alert
+                        var message = jqXHR.responseJSON.message;
+                        $('.submit-section').prepend(
+                            '<div class="alert alert-danger" role="alert">' + message +
+                            '</div>'
+                        );
+                    }
+                    /* error: function() {
                         // On error, show a Bootstrap error alert
                         $('.submit-section').prepend(
                             '<div class="alert alert-danger" role="alert">Save failed!</div>'
                         );
-                    }
+                    } */
                 });
             });
         });

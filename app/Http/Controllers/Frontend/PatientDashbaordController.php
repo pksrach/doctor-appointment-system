@@ -3,13 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Gender;
 use App\Models\Location;
 use Illuminate\Http\Request;
-use App\Models\User; // Import the User model
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use SebastianBergmann\Type\NullType;
 
 class PatientDashbaordController extends Controller
 {
@@ -36,20 +31,43 @@ class PatientDashbaordController extends Controller
 
     public function profileUpdate(Request $req)
     {
-        // Convert location_id to integer
-        Log::info('Request location=>' . $req['location_id']);
-        if ($req['location_id'] != '' || $req['location_id'] !== null) {
-            $req['location_id'] = intval($req['location_id']);
-        } else {
-            $req['location_id'] = null;
-        }
-
-        $user = auth()->user(); // Retrieve the authenticated user
-        $user->update($req->except('_token'));
-
+        // Retrieve the authenticated user
+        $user = $req->user();
+        // Update associated customer entity if exists
         if ($user->customer) {
+            // Convert location_id to integer if provided
+            $locationId = $req->filled('location_id') ? intval($req->location_id) : null;
+
             $customer = $user->customer;
-            $customer->update($req->except('_token'));
+            // Validate the request attachment if attachment not change do not update
+            $fileName = null;
+            // Store the file in the 'public' disk (public folder in your Laravel project)
+            if ($req->hasFile('attachment')) {
+                // attachment exists or not
+                $file = $req->file('attachment');
+                // generate name with uuid for file name
+                $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+                // Store the file in the 'public' disk (public folder in your Laravel project)
+                $destinationPath = public_path('/uploads');
+                $file->move($destinationPath, $fileName);
+            } else {
+                // check if attachment is not empty
+                if ($customer->attachment) {
+                    $fileName = $customer->attachment;
+                } else {
+                    $fileName = null;
+                }
+            }
+
+            $customer->update([
+                'firstname' => $req->firstname ?? '',
+                'lastname' => $req->lastname ?? '',
+                'dob' => $req->dob,
+                'gender' => $req->gender,
+                'phone' => $req->phone,
+                'attachment' => $fileName,
+                'location_id' => $locationId,
+            ]);
         }
 
         return redirect()->back()->with('success', 'Profile updated successfully');
