@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\BackendDashboardController;
+use App\Http\Controllers\Backend\BackendDoctorController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\DoctorController;
@@ -44,5 +46,12 @@ Route::controller(PatientDashbaordController::class)->group(function () {
     Route::get('/patient-dashboard', [PatientDashbaordController::class, 'index']);
     Route::get('/favorite', [PatientDashbaordController::class, 'favorite']);
     Route::get('/profile-setting', [PatientDashbaordController::class, 'profileSetting']);
+    Route::post('/profile-update', [PatientDashbaordController::class, 'profileUpdate'])->name('profile-update');
     Route::get('/change-password', [PatientDashbaordController::class, 'changePassword']);
+});
+
+// Manage Admin Routes
+Route::group(['prefix' => 'backend'], function () {
+    Route::get('/dashboard', [BackendDashboardController::class, 'index'])->name('backend.dashboard');
+    Route::get('/doctor', [BackendDoctorController::class, 'index'])->name('backend.doctor');
 });

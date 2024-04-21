@@ -36,6 +36,20 @@
     </div>
     <!-- /Breadcrumb -->
 
+    {{-- @php
+        function calculateAge($dob)
+        {
+            $dob = date('Y-m-d', strtotime($dob));
+            $dobObject = new DateTime($dob);
+            $nowObject = new DateTime();
+            $diff = $dobObject->diff($nowObject);
+            return $diff->y;
+        }
+
+        $attachmentPath = $customer->attachment ?? asset('assets/img/profile.png');
+        $attachment = asset('uploads/' . $attachmentPath);
+    @endphp --}}
+
     <!-- Page Content -->
     <div class="content">
         <div class="container-fluid">
@@ -47,14 +61,16 @@
                     <div class="profile-sidebar">
                         <div class="widget-profile pro-widget-content">
                             <div class="profile-info-widget">
-                                <a href="#" class="booking-doc-img">
-                                    <img src="assets/img/patients/patient.jpg" alt="User Image">
+                                <a class="booking-doc-img">
+                                    <img src="{{-- {{ $attachment }} --}}" alt="User Image">
                                 </a>
                                 <div class="profile-det-info">
-                                    <h3>Richard Wilson</h3>
+                                    <h3>{{ $customer->firstname }} {{ $customer->lastname }}</h3>
                                     <div class="patient-details">
-                                        <h5><i class="fas fa-birthday-cake"></i> 24 Jul 1983, 38 years</h5>
-                                        <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> Newyork, USA</h5>
+                                        <h5><i class="fas fa-birthday-cake"></i> {{ $customer->dob }},
+                                            {{-- {{ calculateAge($customer->dob) }} Years --}}</h5>
+                                        <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>
+                                            {{-- {{ $locations->firstWhere('id', $customer->location_id)->name }} --}} </h5>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +103,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/') }}">
+                                        <a href="{{ url('/auth/logout') }}">
                                             <i class="fas fa-sign-out-alt"></i>
                                             <span>Logout</span>
                                         </a>
