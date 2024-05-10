@@ -20,8 +20,18 @@ class Customer extends Model
         'location_id',
     ];
 
-    public function user()
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function location(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function displayName(): string
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }
