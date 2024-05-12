@@ -1,4 +1,4 @@
-@extends('backend.layouts.index')
+@extends('backend.layouts.master')
 @section('content')
     <!-- Page Wrapper -->
     <div class="page-wrapper">

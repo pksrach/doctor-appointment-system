@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\BackendAuthController;
 use App\Http\Controllers\Backend\BackendDashboardController;
 use App\Http\Controllers\Backend\BackendDoctorController;
 use App\Http\Controllers\Frontend\AuthController;
@@ -54,6 +55,9 @@ Route::controller(PatientDashbaordController::class)->group(function () {
 //------------------------------------------------------------------------------------------------------
 // Manage Admin Routes
 Route::group(['prefix' => 'backend'], function () {
+    Route::get('/login', [BackendAuthController::class, 'backendLogin'])->name('backend.login');
+
+
     Route::get('/dashboard', [BackendDashboardController::class, 'index'])->name('backend.dashboard');
     Route::get('/doctor', [BackendDoctorController::class, 'index'])->name('backend.doctor');
 
