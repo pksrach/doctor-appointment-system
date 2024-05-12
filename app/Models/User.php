@@ -45,4 +45,15 @@ class User extends Authenticatable
     {
         return $this->hasOne(Customer::class);
     }
+
+    public function hasAnyRole(array $roles)
+    {
+        foreach ($roles as $role) {
+            if ($this->role->name === $role) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

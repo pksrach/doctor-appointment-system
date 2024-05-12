@@ -25,6 +25,15 @@ class DatabaseSeeder extends Seeder
         // Generate user
         User::factory(10)->create();
 
+        User::factory(
+            [
+                'email' => 'admin@gmail.com',
+                'role' => Role::ADMIN,
+                'password' => bcrypt('123456'),
+                'email_verified_at' => now(),
+            ]
+        )->create();
+
 
         // Generate doctor
         Doctor::factory(30)->create();

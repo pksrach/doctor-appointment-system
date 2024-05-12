@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\DoctorController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PatientDashbaordController;
+use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
 
 // Manage Auth Routes
@@ -53,12 +54,16 @@ Route::controller(PatientDashbaordController::class)->group(function () {
 
 
 //------------------------------------------------------------------------------------------------------
-// Manage Admin Routes
-Route::group(['prefix' => 'backend'], function () {
+// Check route backend have auth or not
+Route::group(['prefix' => 'backend', 'middleware' => 'guest'], function () {
     Route::get('/login', [BackendAuthController::class, 'backendLogin'])->name('backend.login');
+    Route::post('/login', [BackendAuthController::class, 'backendDoLogin'])->name('backend.login.post');
+});
 
-
+// Manage Admin Routes
+Route::group(['prefix' => 'backend', 'middleware' => \App\Http\Middleware\CheckBackend::class], function () {
+    Route::get('/', [BackendDashboardController::class, 'index'])->name('backend.home');
     Route::get('/dashboard', [BackendDashboardController::class, 'index'])->name('backend.dashboard');
     Route::get('/doctor', [BackendDoctorController::class, 'index'])->name('backend.doctor');
-
+    Route::post('/logout', [BackendAuthController::class, 'backendLogout'])->name('backend.logout');
 });
