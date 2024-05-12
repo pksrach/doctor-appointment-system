@@ -3,10 +3,10 @@
 
     <!-- Logo -->
     <div class="header-left">
-        <a href="{{url('backend/dashboard')}}" class="logo">
+        <a href="{{route('backend.dashboard')}}" class="logo">
             <img src="{{asset('admin/assets/img/logo.png')}}" alt="Logo">
         </a>
-        <a href="{{url('backend/dashboard')}}" class="logo logo-small">
+        <a href="{{route('backend.dashboard')}}" class="logo logo-small">
             <img src="{{asset('admin/assets/img/logo-small.png')}}" alt="Logo" width="30" height="30">
         </a>
     </div>
@@ -153,7 +153,7 @@
                     <span>Main</span>
                 </li>
                 <li class="{{Request::is('backend/dashboard') ? 'active' : ''}}">
-                    <a href="{{url('backend/dashboard')}}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                    <a href="{{route('backend.dashboard')}}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
                 </li>
                 <li>
                     <a href="appointment-list.html"><i class="fe fe-layout"></i> <span>Appointments</span></a>

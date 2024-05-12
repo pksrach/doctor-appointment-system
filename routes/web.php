@@ -50,8 +50,11 @@ Route::controller(PatientDashbaordController::class)->group(function () {
     Route::get('/change-password', [PatientDashbaordController::class, 'changePassword']);
 });
 
+
+//------------------------------------------------------------------------------------------------------
 // Manage Admin Routes
 Route::group(['prefix' => 'backend'], function () {
     Route::get('/dashboard', [BackendDashboardController::class, 'index'])->name('backend.dashboard');
     Route::get('/doctor', [BackendDoctorController::class, 'index'])->name('backend.doctor');
+
 });

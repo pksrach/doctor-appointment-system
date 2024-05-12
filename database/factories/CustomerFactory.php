@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Gender;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,7 @@ class CustomerFactory extends Factory
         return [
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
-
+            'gender' => $this->faker->randomElement([Gender::MALE => '1', Gender::FEMALE => '2', Gender::OTHER => '0']),
         ];
     }
 }

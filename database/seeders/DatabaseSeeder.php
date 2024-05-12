@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Customer;
 use App\Models\Doctor;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,17 +15,18 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        \App\Models\User::factory(10)->create();
+        // Generate customer
+        User::factory(10)->create(['role' => Role::CUSTOMER])->each(function ($user) {
+            $user->customer()->create(Customer::factory()->raw());
+        });
 
-        \App\Models\User::factory()->create([
-            // 'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => bcrypt('12345678'),
-        ]);
+        // Generate user
+        User::factory(10)->create();
 
-        Doctor::factory(10)->create();
 
+        // Generate doctor
+        Doctor::factory(30)->create();
     }
 }
