@@ -82,7 +82,8 @@
 
                 {{--Appointment--}}
                 <li {{Request::is('backend/appointment') ? 'active' : ''}}>
-                    <a href="#"><i class="fe fe-layout"></i> <span>Appointments</span></a>
+                    <a href="{{route('backend.appointment')}}"><i class="fe fe-layout"></i>
+                        <span>Appointments</span></a>
                 </li>
 
                 {{--Doctor--}}

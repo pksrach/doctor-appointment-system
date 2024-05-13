@@ -41,29 +41,6 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {{--                                    <tr>--}}
-                                    {{--                                        <td>--}}
-                                    {{--                                            <h2 class="table-avatar">--}}
-                                    {{--                                                <a href="profile.html" class="avatar avatar-sm mr-2"><img--}}
-                                    {{--                                                        class="avatar-img rounded-circle"--}}
-                                    {{--                                                        src="assets/img/doctors/doctor-thumb-01.jpg"--}}
-                                    {{--                                                        alt="User Image"></a>--}}
-                                    {{--                                                <a href="profile.html">Dr. Ruby Perrin</a>--}}
-                                    {{--                                            </h2>--}}
-                                    {{--                                        </td>--}}
-                                    {{--                                        <td>Dental</td>--}}
-
-                                    {{--                                        <td>14 Jan 2019 <br><small>02.59 AM</small></td>--}}
-
-                                    {{--                                        <td>$3100.00</td>--}}
-
-                                    {{--                                        <td>--}}
-                                    {{--                                            <div class="status-toggle">--}}
-                                    {{--                                                <input type="checkbox" id="status_1" class="check" checked>--}}
-                                    {{--                                                <label for="status_1" class="checktoggle">checkbox</label>--}}
-                                    {{--                                            </div>--}}
-                                    {{--                                        </td>--}}
-                                    {{--                                    </tr>--}}
                                     </tbody>
                                 </table>
                             </div>

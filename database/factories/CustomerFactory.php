@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Gender;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -24,6 +25,10 @@ class CustomerFactory extends Factory
             'dob' => $this->faker->dateTimeBetween('-60 years', '-18 years'),
             'phone' => '855' . $this->faker->randomElement(['97', '88', '96', '90', '12', '11', '69', '78', '76', '60']) . $this->faker->numerify('######'),
             'location_id' => $this->faker->numberBetween(1, 10),
+            'user_id' => User::factory()->create([
+                'role' => 'customer',
+                'password' => bcrypt('123456')
+            ])->id,
         ];
     }
 }

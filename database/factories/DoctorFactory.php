@@ -19,8 +19,9 @@ class DoctorFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'speciality' => $this->faker->word(),
+            'fee' => $this->faker->randomFloat(2, 0, 500),
             'member_since' => $this->faker->date(),
-            'phone' => $this->faker->phoneNumber(),
+            'phone' => '855' . $this->faker->randomElement(['97', '88', '96', '90', '12', '11', '69', '78', '76', '60']) . $this->faker->numerify('######'),
             'address' => $this->faker->address(),
             'status' => $this->faker->randomElement([0, 1]),
         ];

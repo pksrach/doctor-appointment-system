@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\BackendAppointmentController;
 use App\Http\Controllers\Backend\BackendAuthController;
 use App\Http\Controllers\Backend\BackendDashboardController;
 use App\Http\Controllers\Backend\BackendDoctorController;
@@ -74,5 +75,11 @@ Route::group(['prefix' => 'backend', 'middleware' => \App\Http\Middleware\CheckB
         /*Route::post('/patient/create', [BackendPatientController::class, 'backend.patient.create']);
         Route::post('/patient/update/{id}', [BackendPatientController::class, 'backend.patient.update']);
         Route::get('/patient/delete/{id}', [BackendPatientController::class, 'backend.patient.delete']);*/
+    });
+
+    // Manage Backend Appointment Routes
+    Route::controller(BackendAppointmentController::class)->group(function () {
+        Route::get('/appointment', [BackendAppointmentController::class, 'index'])->name('backend.appointment');
+        Route::put('/appointment/status/{id}', [BackendAppointmentController::class, 'updateStatus'])->name('backend.appointment.status');
     });
 });

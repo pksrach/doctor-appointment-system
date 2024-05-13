@@ -10,19 +10,18 @@ return new class extends Migration {
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('speciality')->nullable();
+            $table->decimal('fee', 10, 2)->default(0);
             $table->date('member_since')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
             $table->softDeletes()->nullable();
 
         });
@@ -33,7 +32,7 @@ return new class extends Migration {
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('doctors');
     }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Doctor extends SoftDeleteModel
 {
@@ -12,9 +13,15 @@ class Doctor extends SoftDeleteModel
     protected $fillable = [
         'name',
         'speciality',
+        'fee',
         'member_since',
         'phone',
         'address',
         'status',
     ];
+
+    public function appointments(): HasMany
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }
