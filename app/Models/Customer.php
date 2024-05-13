@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Customer extends SoftDeleteModel
 {
     use HasFactory;
 
@@ -18,6 +18,7 @@ class Customer extends Model
         'attachment',
         'user_id',
         'location_id',
+        'deleted_at'
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

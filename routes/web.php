@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\BackendAuthController;
 use App\Http\Controllers\Backend\BackendDashboardController;
 use App\Http\Controllers\Backend\BackendDoctorController;
+use App\Http\Controllers\Backend\BackendPatientController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\DoctorController;
@@ -66,4 +67,12 @@ Route::group(['prefix' => 'backend', 'middleware' => \App\Http\Middleware\CheckB
     Route::get('/dashboard', [BackendDashboardController::class, 'index'])->name('backend.dashboard');
     Route::get('/doctor', [BackendDoctorController::class, 'index'])->name('backend.doctor');
     Route::post('/logout', [BackendAuthController::class, 'backendLogout'])->name('backend.logout');
+
+    // Manage Backend Patient Routes
+    Route::controller(BackendPatientController::class)->group(function () {
+        Route::get('/patient', [BackendPatientController::class, 'index'])->name('backend.patient');
+        /*Route::post('/patient/create', [BackendPatientController::class, 'backend.patient.create']);
+        Route::post('/patient/update/{id}', [BackendPatientController::class, 'backend.patient.update']);
+        Route::get('/patient/delete/{id}', [BackendPatientController::class, 'backend.patient.delete']);*/
+    });
 });

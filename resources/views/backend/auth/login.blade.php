@@ -1,4 +1,5 @@
 @extends('backend.layouts.index')
+@section('title', 'Login')
 @section('content')
     <!-- Main Wrapper -->
     <div class="main-wrapper login-body">
