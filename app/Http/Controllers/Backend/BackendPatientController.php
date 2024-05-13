@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use DateTime;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -30,7 +31,12 @@ class BackendPatientController extends Controller
                     return $genders[$row->gender];
                 })
                 ->addColumn('dob', function ($row) {
-                    return $row->dob ? $row->dob->format('d-m-Y') : '';
+                    if ($row->dob) {
+                        $date = new DateTime($row->dob);
+                        return $date->format('Y-m-d');
+                    } else {
+                        return '';
+                    }
                 })
                 ->addColumn('phone', function ($row) {
                     return $row->phone;
