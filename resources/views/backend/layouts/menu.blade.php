@@ -81,7 +81,7 @@
                 </li>
 
                 {{--Appointment--}}
-                <li>
+                <li {{Request::is('backend/appointment') ? 'active' : ''}}>
                     <a href="#"><i class="fe fe-layout"></i> <span>Appointments</span></a>
                 </li>
 
@@ -91,12 +91,12 @@
                 </li>
 
                 {{--Patient--}}
-                <li>
+                <li class="{{Request::is('backend/patient') ? 'active' : ''}}">
                     <a href="{{route('backend.patient')}}"><i class="fe fe-user"></i> <span>Patients</span></a>
                 </li>
 
                 {{--Transaction--}}
-                <li>
+                <li {{Request::is('backend/transaction') ? 'active' : ''}}>
                     <a href="#"><i class="fe fe-activity"></i> <span>Transactions</span></a>
                 </li>
 
@@ -105,7 +105,9 @@
                     <a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span
                             class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="#">Invoice Reports</a></li>
+                        <li {{Request::is('backend/report/invoice') ? 'active' : ''}}>
+                            <a href="#">Invoice Reports</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
