@@ -21,6 +21,9 @@ class CustomerFactory extends Factory
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
             'gender' => $this->faker->randomElement([Gender::MALE => '1', Gender::FEMALE => '2', Gender::OTHER => '0']),
+            'dob' => $this->faker->dateTimeBetween('-60 years', '-18 years'),
+            'phone' => '855' . $this->faker->randomElement(['97', '88', '96', '90', '12', '11', '69', '78', '76', '60']) . $this->faker->numerify('######'),
+            'location_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

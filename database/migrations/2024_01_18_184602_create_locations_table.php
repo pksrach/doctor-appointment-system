@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique(); // location name
             $table->unsignedBigInteger('parent_id')->nullable(); // parent id of locatioin
+            $table->timestamps();
         });
     }
 
