@@ -18,6 +18,7 @@ class Doctor extends SoftDeleteModel
         'phone',
         'address',
         'status',
+        'attachment',
     ];
 
     public function appointments(): HasMany

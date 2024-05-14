@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 use Yajra\DataTables\Facades\DataTables;
 
 class BackendDoctorController extends Controller
@@ -21,10 +20,23 @@ class BackendDoctorController extends Controller
             return DataTables::of($dataTableList)
                 ->addIndexColumn()
                 ->addColumn('name', function ($row) {
-                    return $row->name;
+                    $url = asset($row->attachment ? '/uploads/thumbnail/' . $row->attachment : 'no_image_person.png');
+                    return '
+                        <td>
+                            <h2 class="table-avatar">
+                                <a href=# class="avatar avatar-sm mr-2">
+                                    <img class="avatar-img rounded-circle" src="' . $url . '" alt="">
+                                </a>
+                                <a href="#">' . $row->name . '</a>
+                            </h2>
+                        </td>
+                    ';
                 })
                 ->addColumn('speciality', function ($row) {
                     return $row->speciality;
+                })
+                ->addColumn('fee', function ($row) {
+                    return '$' . $row->fee;
                 })
                 ->addColumn('member_since', function ($row) {
                     return $row->member_since;
@@ -50,7 +62,7 @@ class BackendDoctorController extends Controller
                     return '<button type="button" id="' . $row->id . '" class="editRoom btn btn-primary btn-sm">Edit</button >&nbsp;
                         <button type="button" id="' . $row->id . '" class="deleteRoom btn btn-danger btn-sm">Delete</button>';
                 })
-                ->rawColumns(['status', 'action'])
+                ->rawColumns(['name', 'status', 'action'])
                 ->make(true);
         }
 

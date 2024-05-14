@@ -20,6 +20,18 @@ class BackendPatientController extends Controller
 
             return DataTables::of($dataTableList)
                 ->addIndexColumn()
+                ->addColumn('photo', function ($row) {
+                    $url = asset($row->avatar ? '/uploads/thumbnail/' . $row->attachment : 'no_image_person.png');
+                    return '
+                        <td>
+                            <h2 class="table-avatar">
+                                <a href=# class="avatar avatar-sm mr-2">
+                                    <img class="avatar-img rounded-circle" src="' . $url . '" alt="">
+                                </a>
+                            </h2>
+                        </td>
+                    ';
+                })
                 ->addColumn('firstname', function ($row) {
                     return $row->firstname;
                 })
@@ -51,7 +63,7 @@ class BackendPatientController extends Controller
                     return '<button type="button" id="' . $row->id . '" class="editRoom btn btn-primary btn-sm">Edit</button >&nbsp;
                         <button type="button" id="' . $row->id . '" class="deleteRoom btn btn-danger btn-sm">Delete</button>';
                 })
-                ->rawColumns(['action', 'gender'])
+                ->rawColumns(['photo', 'action', 'gender'])
                 ->make(true);
         }
 

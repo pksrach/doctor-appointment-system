@@ -31,6 +31,7 @@
                                 <table id="dataTableList" class="datatable table table-hover table-center mb-0">
                                     <thead>
                                     <tr>
+                                        <th>Photo</th>
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>Gender</th>
@@ -67,6 +68,7 @@
                 destroy: true,
                 ajax: "{{route('backend.patient')}}",
                 columns: [
+                    {data: 'photo', name: 'photo'},
                     {data: 'firstname', name: 'firstname'},
                     {data: 'lastname', name: 'lastname'},
                     {data: 'gender', name: 'gender'},

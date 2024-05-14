@@ -24,13 +24,33 @@ class BackendAppointmentController extends Controller
                     return $row->appointment_date;
                 })
                 ->addColumn('doctor', function ($row) {
-                    return $row->doctor->name;
+                    $url = asset($row->doctor->attachment ? '/uploads/thumbnail/' . $row->doctor->attachment : 'no_image_person.png');
+                    return '
+                        <td>
+                            <h2 class="table-avatar">
+                                <a href=# class="avatar avatar-sm mr-2">
+                                    <img class="avatar-img rounded-circle" src="' . $url . '" alt="">
+                                </a>
+                                <a href="#">' . $row->doctor->name . '</a>
+                            </h2>
+                        </td>
+                    ';
                 })
                 ->addColumn('speciality', function ($row) {
                     return $row->doctor->speciality;
                 })
                 ->addColumn('patient', function ($row) {
-                    return $row->patient->firstname . ' ' . $row->patient->lastname;
+                    $url = asset($row->patient->attachment ? '/uploads/thumbnail/' . $row->patient->attachment : 'no_image_person.png');
+                    return '
+                        <td>
+                            <h2 class="table-avatar">
+                                <a href=# class="avatar avatar-sm mr-2">
+                                    <img class="avatar-img rounded-circle" src="' . $url . '" alt="">
+                                </a>
+                                <a href="#">' . $row->patient->firstname . ' ' . $row->patient->lastname . '</a>
+                            </h2>
+                        </td>
+                    ';
                 })
                 ->addColumn('amount', function ($row) {
                     return $row->amount;
@@ -48,18 +68,18 @@ class BackendAppointmentController extends Controller
                     $statusClass = $statusClassMap[$row->status] ?? 'text-warning';
 
                     return '
-        <td>
-            <div class="status-toggle">
-                <select id="status_' . $row->id . '" data-id="' . $row->id . '" class="status-select form-control ' . $statusClass . '">
-                    <option value="pending" class="text-warning" ' . $selectedPending . '>Pending</option>
-                    <option value="approved" class="text-success" ' . $selectedApproved . '>Approved</option>
-                    <option value="rejected" class="text-danger" ' . $selectedRejected . '>Rejected</option>
-                </select>
-            </div>
-        </td>
-    ';
+                        <td>
+                            <div class="status-toggle">
+                                <select id="status_' . $row->id . '" data-id="' . $row->id . '" class="status-select form-control ' . $statusClass . '">
+                                    <option value="pending" class="text-warning" ' . $selectedPending . '>Pending</option>
+                                    <option value="approved" class="text-success" ' . $selectedApproved . '>Approved</option>
+                                    <option value="rejected" class="text-danger" ' . $selectedRejected . '>Rejected</option>
+                                </select>
+                            </div>
+                        </td>
+                    ';
                 })
-                ->rawColumns(['status'])
+                ->rawColumns(['doctor', 'patient', 'status'])
                 ->make(true);
         }
 

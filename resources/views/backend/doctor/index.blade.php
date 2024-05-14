@@ -33,6 +33,7 @@
                                     <tr>
                                         <th>Doctor Name</th>
                                         <th>Speciality</th>
+                                        <th>Fee</th>
                                         <th>Member Since</th>
                                         <th>Phone</th>
                                         <th>Address</th>
@@ -68,6 +69,7 @@
                 columns: [
                     {data: 'name', name: 'name'},
                     {data: 'speciality', name: 'speciality'},
+                    {data: 'fee', name: 'fee'},
                     {data: 'member_since', name: 'member_since'},
                     {data: 'phone', name: 'phone'},
                     {data: 'address', name: 'address'},
