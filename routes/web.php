@@ -42,6 +42,7 @@ Route::controller(DoctorController::class)->group(function () {
 // Manage Booking Routes
 Route::controller(BookingController::class)->group(function () {
     Route::get('/booking', [BookingController::class, 'index']);
+    Route::get('/booking/{id}', [BookingController::class, 'index']);
     Route::get('/checkout', [BookingController::class, 'checkout']);
 });
 

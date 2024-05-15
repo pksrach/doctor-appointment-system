@@ -13,8 +13,8 @@
                             <img src="{{ asset('assets/img/footer-logo.png') }}" alt="logo">
                         </div>
                         <div class="footer-about-content">
-                            <p>Your privacy is our priority. Read our [Privacy Policy] and learn about our security
-                                measures. </p>
+                            <p>Your privacy is our priority. Read our <a href="/privacy-policy"><span style="color: #f0f0f0">Privacy Policy</span></a> and learn about our security measures. </p>
+                            <p>Follow us on social media:</p>
                             <div class="social-icon">
                                 <ul>
                                     <li>
@@ -149,6 +149,8 @@
 
 <!-- Custom JS -->
 <script src="{{ asset('assets/js/script.js') }}"></script>
+
+@yield('script')
 
 </body>
 

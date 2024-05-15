@@ -1,4 +1,15 @@
 @extends('frontend.layouts.master')
+@section('style')
+    <style>
+        .current-date {
+            background-color: yellow; /* Change this to your preferred color */
+        }
+
+        .timing {
+            margin: 10px; /* Adjust this value as needed */
+        }
+    </style>
+@endsection
 @section('content')
     <!-- Breadcrumb -->
     <div class="breadcrumb-bar">
@@ -29,19 +40,16 @@
                         <div class="card-body">
                             <div class="booking-doc-info">
                                 <a href="{{ url('/doctor-profile') }}" class="booking-doc-img">
-                                    <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                                    <img
+                                        src="{{asset($doctor->attchment ? 'uploads/'.$doctor->attchment : 'doctor_default.png')}}"
+                                        alt="{{$doctor->name}}">
                                 </a>
                                 <div class="booking-info">
-                                    <h4><a href="{{ url('/doctor-profile') }}">Dr. Darren Elder</a></h4>
-                                    <div class="rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="d-inline-block average-rating">35</span>
-                                    </div>
-                                    <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Newyork, USA</p>
+                                    <h4><a href="{{ url('/doctor-profile') }}">{{$doctor->name}}</a></h4>
+                                    <p class="text-muted mb-0">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        {{$doctor->address}}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -63,34 +71,22 @@
                                                     <i class="fa fa-chevron-left"></i>
                                                 </a>
                                             </li>
-                                            <li>
-                                                <span>Mon</span>
-                                                <span class="slot-date">11 Nov <small class="slot-year">2019</small></span>
-                                            </li>
-                                            <li>
-                                                <span>Tue</span>
-                                                <span class="slot-date">12 Nov <small class="slot-year">2019</small></span>
-                                            </li>
-                                            <li>
-                                                <span>Wed</span>
-                                                <span class="slot-date">13 Nov <small class="slot-year">2019</small></span>
-                                            </li>
-                                            <li>
-                                                <span>Thu</span>
-                                                <span class="slot-date">14 Nov <small class="slot-year">2019</small></span>
-                                            </li>
-                                            <li>
-                                                <span>Fri</span>
-                                                <span class="slot-date">15 Nov <small class="slot-year">2019</small></span>
-                                            </li>
-                                            <li>
-                                                <span>Sat</span>
-                                                <span class="slot-date">16 Nov <small class="slot-year">2019</small></span>
-                                            </li>
-                                            <li>
-                                                <span>Sun</span>
-                                                <span class="slot-date">17 Nov <small class="slot-year">2019</small></span>
-                                            </li>
+                                            @php
+                                                $date = \Carbon\Carbon::now('Asia/Phnom_Penh'); // Replace 'Asia/Phnom_Penh' with your local timezone
+                                                $today = \Carbon\Carbon::now('Asia/Phnom_Penh')->startOfDay();
+                                            @endphp
+                                            @for($i = 0; $i < 7; $i++)
+                                                <li>
+                                                    <span>{{ $date->format('D') }}</span>
+                                                    <span
+                                                        class="slot-date {{ $date->startOfDay()->equalTo($today) ? 'current-date' : '' }}">
+                                                        {{ $date->format('d M y') }}
+                                                    </span>
+                                                </li>
+                                                @php
+                                                    $date->add(new DateInterval('P1D')); // Add 1 day
+                                                @endphp
+                                            @endfor
                                             <li class="right-arrow">
                                                 <a href="#">
                                                     <i class="fa fa-chevron-right"></i>
@@ -113,87 +109,9 @@
                                     <!-- Time Slot -->
                                     <div class="time-slot">
                                         <ul class="clearfix">
-                                            <li>
-                                                <a class="timing" href="#">
-                                                    <span>9:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>10:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>11:00</span> <span>AM</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="timing" href="#">
-                                                    <span>9:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>10:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>11:00</span> <span>AM</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="timing" href="#">
-                                                    <span>9:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>10:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>11:00</span> <span>AM</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="timing" href="#">
-                                                    <span>9:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>10:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>11:00</span> <span>AM</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="timing" href="#">
-                                                    <span>9:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing selected" href="#">
-                                                    <span>10:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>11:00</span> <span>AM</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="timing" href="#">
-                                                    <span>9:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>10:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>11:00</span> <span>AM</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="timing" href="#">
-                                                    <span>9:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>10:00</span> <span>AM</span>
-                                                </a>
-                                                <a class="timing" href="#">
-                                                    <span>11:00</span> <span>AM</span>
-                                                </a>
-                                            </li>
+                                            <!-- Time Slot -->
                                         </ul>
                                     </div>
-                                    <!-- /Time Slot -->
-
                                 </div>
                             </div>
                         </div>
@@ -214,4 +132,150 @@
 
     </div>
     <!-- /Page Content -->
+@endsection
+
+@section('script')
+    <script>
+        var currentDate = new Date(); // Start with the current date
+
+        function formatDate(date) {
+            var day = date.getDate();
+            var monthIndex = date.getMonth();
+            var year = date.getFullYear();
+
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+            return day + ' ' + months[monthIndex] + ' ' + year.toString().substr(-2);
+        }
+
+        function updateDateDisplay() {
+            // Get the date elements
+            var dateElements = document.querySelectorAll('.slot-date');
+
+            // Get today's date
+            var today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            // Loop over the date elements
+            for (var i = 0; i < dateElements.length; i++) {
+                // Create a new date based on the current date
+                var newDate = new Date(currentDate.getTime() + i * 24 * 60 * 60 * 1000);
+                newDate.setHours(0, 0, 0, 0);
+
+                // Format the new date
+                var dateString = formatDate(newDate);
+
+                // Update the text content of the date element
+                dateElements[i].textContent = dateString;
+
+                // Create a unique ID for the date element
+                var dateId = newDate.toISOString().replace(/[^0-9]/g, '');
+                dateElements[i].id = dateId;
+
+                // Highlight the current date
+                if (+newDate === +today) {
+                    dateElements[i].classList.add('current-date');
+                } else {
+                    dateElements[i].classList.remove('current-date');
+                }
+            }
+        }
+
+        document.querySelector('.right-arrow a').addEventListener('click', function (event) {
+            event.preventDefault();
+            currentDate.setDate(currentDate.getDate() + 7); // Add 7 days
+            updateDateDisplay();
+        });
+
+        document.querySelector('.left-arrow a').addEventListener('click', function (event) {
+            event.preventDefault();
+            currentDate.setDate(currentDate.getDate() - 7); // Subtract 7 days
+            updateDateDisplay();
+        });
+    </script>
+
+    <script>
+        // The time display
+        var timeSlots = document.querySelector('.clearfix');
+
+        // Get the current date
+        var currentDate = new Date();
+        currentDate.setHours(0, 0, 0, 0);
+
+        // Define the times
+        var times = ['08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM'];
+
+        for (var i = 0; i < 7; i++) {
+            var li = document.createElement('li');
+
+            times.forEach(function (time) {
+                var a = document.createElement('a');
+                a.className = 'timing';
+                a.href = '#';
+                a.dataset.time = time;
+
+                // Create a new date object based on the current date
+                var slotDate = new Date(currentDate.getTime() + i * 24 * 60 * 60 * 1000);
+
+                // Split the time into hours, minutes, and the AM/PM part
+                var timeParts = time.split(' ');
+                var hoursMinutes = timeParts[0].split(':');
+                var amPm = timeParts[1];
+
+                // Convert the hours to 24-hour format
+                var hours = parseInt(hoursMinutes[0]);
+                if (amPm === 'PM' && hours !== 12) {
+                    hours += 12;
+                } else if (amPm === 'AM' && hours === 12) {
+                    hours = 0;
+                }
+
+                // Set the hours and minutes of the date object
+                slotDate.setHours(hours, parseInt(hoursMinutes[1]));
+
+                // Format the date and time into a string and use it as the ID
+                var slotId = 'slot-' + slotDate.toISOString().replace(/[^0-9]/g, '');
+                a.id = slotId;
+
+                var span = document.createElement('span');
+                span.textContent = time;
+
+                a.appendChild(span);
+                li.appendChild(a);
+
+                // Add event listener to the time slot
+                a.addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    var selectedTime = this.getAttribute('data-time');
+                    var selectedDate = new Date(currentDate.getTime()); // Create a new date object based on the current date
+
+                    // Set the hours and minutes of the new date object based on the selected time
+                    selectedDate.setHours(selectedTime.split(':')[0], selectedTime.split(':')[1]);
+
+                    if (selectedDate < new Date()) {
+                        alert('You cannot select a time in the past.');
+                    } else {
+                        // The time is not in the past, so you can proceed with your logic here.
+                        // For example, you can add the 'selected' class to the selected time slot:
+                        document.querySelectorAll('.timing').forEach(function (timing) {
+                            timing.classList.remove('selected');
+                        });
+                        this.classList.add('selected');
+                    }
+                });
+            });
+
+            timeSlots.appendChild(li);
+        }
+
+        // Console log choosing time slot
+        document.querySelectorAll('.timing').forEach(function (timing) {
+            timing.addEventListener('click', function () {
+                this.dataset.date = currentDate.toISOString().split('T')[0];
+                console.log('You have chosen the time slot: ' + this.dataset.time);
+
+            });
+        });
+    </script>
 @endsection

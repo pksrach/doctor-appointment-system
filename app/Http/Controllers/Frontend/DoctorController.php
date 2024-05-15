@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Doctor;
+use Illuminate\View\View;
 
 class DoctorController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        return view('frontend.doctor.index');
+        $data['doctors'] = Doctor::all();
+        return view('frontend.doctor.index', $data);
     }
 
-    public function doctorProfile()
+    public function doctorProfile(): View
     {
         return view('frontend.doctor.profile');
     }

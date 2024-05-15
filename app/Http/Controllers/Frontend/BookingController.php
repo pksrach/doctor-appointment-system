@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Doctor;
+use Illuminate\View\View;
 
 class BookingController extends Controller
 {
-    public function index()
+    public function index($id): View
     {
-        return view('frontend.booking.index');
+        $doctor = Doctor::findOrFail($id);
+        return view('frontend.booking.index', compact('doctor'));
     }
 
-    public function checkout(){
+    public function checkout()
+    {
         return view('frontend.booking.checkout');
     }
 }
