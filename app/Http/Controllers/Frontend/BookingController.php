@@ -14,8 +14,9 @@ class BookingController extends Controller
         return view('frontend.booking.index', compact('doctor'));
     }
 
-    public function checkout()
+    public function checkout($id)
     {
-        return view('frontend.booking.checkout');
+        $doctor = Doctor::findOrFail($id);
+        return view('frontend.booking.checkout', compact('doctor'));
     }
 }

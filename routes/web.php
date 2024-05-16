@@ -10,7 +10,7 @@ use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\DoctorController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PatientDashbaordController;
-use App\Http\Middleware\CheckRole;
+use App\Http\Controllers\Frontend\SessionController;
 use Illuminate\Support\Facades\Route;
 
 // Manage Auth Routes
@@ -43,8 +43,11 @@ Route::controller(DoctorController::class)->group(function () {
 Route::controller(BookingController::class)->group(function () {
     Route::get('/booking', [BookingController::class, 'index']);
     Route::get('/booking/{id}', [BookingController::class, 'index']);
-    Route::get('/checkout', [BookingController::class, 'checkout']);
+    Route::get('/checkout/{id}', [BookingController::class, 'checkout'])->name('checkout');
 });
+
+Route::post('/store-session', [SessionController::class, 'store']);
+
 
 // Manage Customer Dashboard Routes
 Route::controller(PatientDashbaordController::class)->group(function () {
