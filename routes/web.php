@@ -44,6 +44,7 @@ Route::controller(BookingController::class)->group(function () {
     Route::get('/booking', [BookingController::class, 'index']);
     Route::get('/booking/{id}', [BookingController::class, 'index']);
     Route::get('/checkout/{id}', [BookingController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout', [BookingController::class, 'makeCheckout'])->name('make.checkout');
 });
 
 Route::post('/store-session', [SessionController::class, 'store']);
@@ -51,7 +52,7 @@ Route::post('/store-session', [SessionController::class, 'store']);
 
 // Manage Customer Dashboard Routes
 Route::controller(PatientDashbaordController::class)->group(function () {
-    Route::get('/patient-dashboard', [PatientDashbaordController::class, 'index']);
+    Route::get('/patient-dashboard', [PatientDashbaordController::class, 'index'])->name('patient.dashboard');
     Route::get('/favorite', [PatientDashbaordController::class, 'favorite']);
     Route::get('/profile-setting', [PatientDashbaordController::class, 'profileSetting']);
     Route::post('/profile-update', [PatientDashbaordController::class, 'profileUpdate'])->name('profile-update');

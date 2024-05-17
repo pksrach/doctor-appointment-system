@@ -19,6 +19,8 @@ return new class extends Migration {
             $table->dateTime('appointment_date');
             $table->decimal('amount', 10, 2)->default(0);
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->string('payment_method')->nullable();
+            $table->string('payment_image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

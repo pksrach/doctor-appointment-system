@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Appointment;
 use App\Models\Location;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,9 @@ class PatientDashbaordController extends Controller
 {
     public function index()
     {
-        return view('frontend.dashboard.index');
+        $patient_id = auth()->user()->customer->id;
+        $data['appointments'] = Appointment::where('patient_id', $patient_id)->get();
+        return view('frontend.dashboard.index', compact('data'));
     }
 
     public function favorite()
@@ -21,7 +24,7 @@ class PatientDashbaordController extends Controller
     public function profileSetting()
     {
         $data = [
-            'locations' =>  Location::all(), // Location model,
+            'locations' => Location::all(), // Location model,
             'user' => auth()->user(), // User model
             'customer' => 'customer', // Customer model
         ];

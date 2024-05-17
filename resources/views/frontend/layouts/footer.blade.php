@@ -13,7 +13,9 @@
                             <img src="{{ asset('assets/img/footer-logo.png') }}" alt="logo">
                         </div>
                         <div class="footer-about-content">
-                            <p>Your privacy is our priority. Read our <a href="/privacy-policy"><span style="color: #f0f0f0">Privacy Policy</span></a> and learn about our security measures. </p>
+                            <p>Your privacy is our priority. Read our <a href="/privacy-policy"><span
+                                        style="color: #f0f0f0">Privacy Policy</span></a> and learn about our security
+                                measures. </p>
                             <p>Follow us on social media:</p>
                             <div class="social-icon">
                                 <ul>
@@ -73,7 +75,8 @@
 
                     <!-- Footer Widget -->
                     <div class="footer-widget footer-contact">
-                        <h2 class="footer-title"><a href="{{ url('/contact-us') }}" style="color: white">Contact Us</a></h2>
+                        <h2 class="footer-title"><a href="{{ url('/contact-us') }}" style="color: white">Contact Us</a>
+                        </h2>
                         <div class="footer-contact-info">
                             <div class="footer-address">
                                 <span><i class="fas fa-map-marker-alt"></i></span>
@@ -86,7 +89,8 @@
                             </p>
                             <p class="mb-0">
                                 <i class="fas fa-envelope"></i>
-                                <a href="mailto:doctor.support@gmail.com" style="color: white">doctor.support@gmail.com</a>
+                                <a href="mailto:doctor.support@gmail.com"
+                                   style="color: white">doctor.support@gmail.com</a>
                             </p>
                         </div>
                     </div>
@@ -143,6 +147,10 @@
 <!-- Bootstrap Core JS -->
 <script src="{{ asset('assets/js/popper.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+
+<!-- Sticky Sidebar JS -->
+<script src="{{asset('assets/plugins/theia-sticky-sidebar/ResizeSensor.js')}}"></script>
+<script src="{{asset('assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js')}}"></script>
 
 <!-- Slick JS -->
 <script src="{{ asset('assets/js/slick.js') }}"></script>

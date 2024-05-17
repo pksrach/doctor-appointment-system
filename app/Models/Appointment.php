@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -37,14 +39,22 @@ class Appointment extends SoftDeleteModel
         $this->attributes['status'] = strtolower($value);
     }
 
-    public function getAppointmentDateAttribute($value): string
+    /**
+     * @throws \Exception
+     */
+    public function getAppointmentDateAttribute($value)
     {
-        return date('Y-m-d H:i:s', strtotime($value));
+        // Assuming $value is a DateTime instance or a date string
+        // Format the date to a string and return it
+        return Carbon::parse($value)->format('Y-m-d');
     }
 
+    /**
+     * @throws \Exception
+     */
     public function setAppointmentDateAttribute($value): void
     {
-        $this->attributes['appointment_date'] = $value->format('Y-m-d H:i:s');
+        $this->attributes['appointment_date'] = (new DateTime($value))->format('Y-m-d H:i:s');
     }
 
     public function getFeeAttribute($value): string
