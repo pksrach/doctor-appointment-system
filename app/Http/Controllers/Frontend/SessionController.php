@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\JsonResponse
     {
         session(['date' => $request->date]);
         session(['time' => $request->time]);
 
-        return response()->json(['status' => 'success']);
+        return response()->json(['status' => 'success', 'date' => session('date'), 'time' => session('time')]);
     }
 }
