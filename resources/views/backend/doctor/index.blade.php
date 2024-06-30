@@ -23,6 +23,7 @@
             </div>
             <!-- /Page Header -->
 
+            <button type="button" id="create" class="btn btn-success btn-md">Create</button>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">

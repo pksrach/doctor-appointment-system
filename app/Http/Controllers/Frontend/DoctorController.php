@@ -11,7 +11,7 @@ class DoctorController extends Controller
     public function index(): View
     {
         $data['doctors'] = Doctor::all();
-        return view('frontend.doctor.index', $data);
+        return view('frontend.doctor.index', compact('data'));
     }
 
     public function doctorProfile(): View

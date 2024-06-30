@@ -55,6 +55,22 @@ class BackendAppointmentController extends Controller
                 ->addColumn('amount', function ($row) {
                     return $row->amount;
                 })
+                ->addColumn('payment_method', function ($row) {
+                    $url = asset($row->payment_image ? '/uploads/thumbnail/' . $row->payment_image : 'no_image_person.png');
+                    return '
+                        <td>
+                            <h2 class="table-avatar">
+                                <a href="'.$url.'" target="_blank" class="avatar avatar-sm mr-2" >
+                                    <img class="avatar-img rounded-circle" src="' . $url . '" alt="">
+                                </a>
+                                <a href="#">' . $row->payment_method . '</a>
+                            </h2>
+                        </td>
+                    ';
+                })
+                ->addColumn('payment_image', function ($row) {
+
+                })
                 ->addColumn('status', function ($row) {
                     $selectedApproved = $row->status == 'Approved' ? 'selected' : '';
                     $selectedRejected = $row->status == 'Rejected' ? 'selected' : '';
@@ -79,7 +95,7 @@ class BackendAppointmentController extends Controller
                         </td>
                     ';
                 })
-                ->rawColumns(['doctor', 'patient', 'status'])
+                ->rawColumns(['doctor', 'patient', 'payment_method', 'status'])
                 ->make(true);
         }
 

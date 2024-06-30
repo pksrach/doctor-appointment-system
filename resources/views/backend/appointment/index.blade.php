@@ -22,6 +22,7 @@
             </div>
             <!-- /Page Header -->
 
+            <button type="button" id="create" class="btn btn-success btn-md">Create</button>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
@@ -35,6 +36,7 @@
                                         <th>Speciality</th>
                                         <th>Patient Name</th>
                                         <th>Amount</th>
+                                        <th>Payment Method</th>
                                         <th>Status</th>
                                     </tr>
                                     </thead>
@@ -90,6 +92,7 @@
                     {data: 'speciality', name: 'speciality'},
                     {data: 'patient', name: 'patient'},
                     {data: 'amount', name: 'amount'},
+                    {data: 'payment_method', name: 'payment_method'},
                     {data: 'status', name: 'status', orderable: false}
                 ]
             });
